@@ -33,7 +33,7 @@ class TablaProductos
                 $estado = "<span class='badge rounded-pill bg-danger'>Inactivo</span>";
             }
             $categoria = CategoriasControlador::ctrMostrarCategorias("id_categoria", $productos[$i]["categoria_producto"]);
-            $imagen =  "<img src= '".substr($productos[$i]['imagen_producto'],2)."'>";
+            $imagen = "<img width='100' src='".$productos[$i]['imagen_producto']."'>";
             //Traemos las acciones
             $acciones = "<a type='button' class='btn btn-icon btn-light-warning btnBoton'  href = 'index.php?pagina=editar-producto&id_producto=" . $productos[$i]["id_producto"] . "' ><i class='fas fa-pen'></i></a> <button type='button' id_producto = '" . $productos[$i]["id_producto"] . "' class='btn btn-icon btn-light-danger btnEliminarProducto'><i class='fas fa-trash-alt'></i></button>";
            /*  $acciones = "<button type='button' class='btn bg-gradient-warning btnBoton' tipo = 'editar' id_producto = '" . $productos[$i]["id_producto"] . "'  data-toggle='modal' data-target='#editar-producto'><i class='fas fa-edit'></i></button> <button type='button' id_producto = '" . $productos[$i]["id_producto"] . "' class='btn bg-gradient-danger btnEliminarProducto'><i class='fas fa-trash'></i></button>"; */

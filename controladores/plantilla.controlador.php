@@ -14,7 +14,7 @@ class PlantillaControlador
     //metodo para crear url
     static public function url()
     {
-        return "http://localhost/ProyectoLaboratorio3/";
+        return "https://controlstock.com.ar/nobile/";
     }
 
     

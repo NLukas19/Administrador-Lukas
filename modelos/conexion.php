@@ -3,9 +3,9 @@
 class Conexion
 {
     const HOST = "localhost";
-    const DBNAME = "BaseConstructora";
-    const USER = "root";
-    const PASSWORD = "";
+    const DBNAME = "controlstockcom_nobile";
+    const USER = "controlstockcom_nobile";
+    const PASSWORD = "Y2EpxmSp4YRSqffsU48H";
     static public function conectar()
     {
         try
