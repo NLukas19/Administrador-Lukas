@@ -29,7 +29,7 @@ $url = PlantillaControlador::url();
     <link rel="stylesheet" href="<?php echo $url ?>vistas/assets/css/style.css" id="main-style-link">
     <link rel="stylesheet" href="<?php echo $url ?>vistas/assets/css/style-preset.css">
     <link rel="icon" href="<?php echo $url ?>vistas/assets/images/favicon.svg" type="image/x-icon">
-    <link rel="stylesheet" href="<?php echo $url ?>vistas/assets/css/plugins/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="<?php echo $url ?>https://controlstock.com.ar/nobile/vistas/assets/css/plugins/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="<?php echo $url ?>vistas/assets/css/plugins/responsive.bootstrap5.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo $url ?>vistas/assets/fonts/material.css" >

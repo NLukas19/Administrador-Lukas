@@ -1,3 +1,12 @@
+<?php
+
+$categorias = CategoriasControlador::ctrMostrarCategorias(null, null);
+#print_r($categorias);
+
+$productos = ProductosControlador::ctrMostrarProductos(null,null);
+
+?>
+
 <div class="pc-container">
     <div class="pc-content">
         <div class="row">
@@ -42,47 +51,17 @@
                                                             data-bs-toggle="collapse" href="#filtercollapse2">
                                                             <div class="float-end">
                                                             </div>
-                                                            Categories
+                                                            Categorias
                                                         </a>
                                                         <div>
-                                                            <div class="py-3">
-                                                                <div class="form-check my-2">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="categoryfilter1" value="option1">
-                                                                    <label class="form-check-label"
-                                                                        for="categoryfilter1">All</label>
+                                                            <?php foreach ($categorias as $value) { ?>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" id="category_<?php echo $value["id_categoria"]; ?>" value="<?php echo $value["id_categoria"]; ?>">
+                                                                    <label class="form-check-label" for="category_<?php echo $value["id_categoria"]; ?>">
+                                                                        <?php echo $value["nombre_categoria"]; ?>
+                                                                    </label>
                                                                 </div>
-                                                                <div class="form-check my-2">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="categoryfilter2" value="option2">
-                                                                    <label class="form-check-label"
-                                                                        for="categoryfilter2">Electronics</label>
-                                                                </div>
-                                                                <div class="form-check my-2">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="categoryfilter3" value="option3">
-                                                                    <label class="form-check-label"
-                                                                        for="categoryfilter3">Fashion</label>
-                                                                </div>
-                                                                <div class="form-check my-2">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="categoryfilter4" value="option1">
-                                                                    <label class="form-check-label"
-                                                                        for="categoryfilter4">Kitchen</label>
-                                                                </div>
-                                                                <div class="form-check my-2">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="categoryfilter5" value="option2">
-                                                                    <label class="form-check-label"
-                                                                        for="categoryfilter5">Books</label>
-                                                                </div>
-                                                                <div class="form-check my-2">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="categoryfilter6" value="option3">
-                                                                    <label class="form-check-label"
-                                                                        for="categoryfilter6">Toys</label>
-                                                                </div>
-                                                            </div>
+                                                            <?php } ?>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -99,405 +78,55 @@
                                 <li class="list-inline-item">
                                     <form class="form-search">
                                         <i class="ph-duotone ph-magnifying-glass icon-search"></i>
-                                        <input type="search" class="form-control" placeholder="Search Products">
+                                        <input type="search" class="form-control" placeholder="Buscar producto">
                                     </form>
                                 </li>
                             </ul>
                             <ul class="list-inline ms-auto my-1">
-                                <li class="list-inline-item">
-                                    <select class="form-select">
-                                        <option>Price: High To Low</option>
-                                        <option>Price: Low To High</option>
-                                        <option>Popularity</option>
-                                        <option>Discount</option>
-                                        <option>Fresh Arrivals</option>
-                                    </select>
-                                </li>
                                 <li class="list-inline-item align-bottom">
-                                    <a href="#" class="d-xxl-none btn btn-link-dark" data-bs-toggle="offcanvas"
-                                        data-bs-target="#offcanvas_mail_filter">
-                                        <i class="ti ti-filter f-16"></i> Filter
-                                    </a>
                                     <a href="#" class="d-none d-xxl-inline-flex btn btn-link-dark"
                                         data-bs-toggle="collapse" data-bs-target="#ecom-filter">
-                                        <i class="ti ti-filter f-16"></i> Filter
+                                        <i class="ti ti-filter f-16"></i> Ocultar categorias
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="card product-card card-border-none">
-                                    <div class="card-img-top">
-                                        
-                                            <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-1.jpg" alt="image"
-                                                class="img-prod img-fluid">
-                                        
-                                        <div class="card-body position-absolute end-0 top-0">
-                                            <div class="form-check prod-likes">
-                                                <input type="checkbox" class="form-check-input">
-                                                <i data-feather="heart" class="prod-likes-icon"></i>
+                    <div class="row">
+                        <?php foreach ($productos as $value) { ?>
+                                <div class="col-sm-6 col-xl-4">
+                                    <div class="card product-card card-border-none">
+                                        <div class="card-img-top">
+
+                                                <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-1.jpg" alt="image"
+                                                    class="img-prod img-fluid">
+                                        </div>
+                                        <div class="card-body">
+
+                                                <p class="prod-content mb-0 text-muted"><?php echo $value["nombre_producto"];?></p>
+
+                                            <div
+                                                class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
+                                                <h4 class="mb-0 text-truncate"><b>$299.00</b> <span
+                                                        class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span>
+                                                </h4>
+                                                <div class="d-inline-flex align-items-center">
+                                                    <i class="ph-duotone ph-star text-warning me-1"></i>
+                                                    4.5 <small class="text-muted">/ 5</small>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        
-                                            <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                                        
-                                        <div
-                                            class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                                            <h4 class="mb-0 text-truncate"><b>$299.00</b> <span
-                                                    class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span>
-                                            </h4>
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="ph-duotone ph-star text-warning me-1"></i>
-                                                4.5 <small class="text-muted">/ 5</small>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <a href="#" class="avtar avtar-s btn-link-secondary btn-prod-card"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas">
-                                                    <i class="ph-duotone ph-eye f-18"></i>
-                                                </a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="card product-card card-border-none">
-                                    <div class="card-img-top">
-                                        
-                                            <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-2.jpg" alt="image"
-                                                class="img-prod img-fluid" data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas">
-                                        
-                                        <div class="card-body position-absolute end-0 top-0">
-                                            <div class="form-check prod-likes">
-                                                <input type="checkbox" class="form-check-input">
-                                                <i data-feather="heart" class="prod-likes-icon"></i>
-                                            </div>
-                                        </div>
-                                        <div class="card-body position-absolute start-0 top-0">
-                                            <span class="badge bg-danger badge-prod-card">30%</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        
-                                            <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                                        
-                                        <div
-                                            class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                                            <h4 class="mb-0 text-truncate"><b>$299.00</b> <span
-                                                    class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span>
-                                            </h4>
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="ph-duotone ph-star text-warning me-1"></i>
-                                                4.5 <small class="text-muted">/ 5</small>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <a href="#" class="avtar avtar-s btn-link-secondary btn-prod-card"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas">
-                                                    <i class="ph-duotone ph-eye f-18"></i>
-                                                </a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="card product-card card-border-none">
-                                    <div class="card-img-top">
-                                        
-                                            <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-3.jpg" alt="image"
-                                                class="img-prod img-fluid">
-                                        
-                                        <div class="card-body position-absolute end-0 top-0">
-                                            <div class="form-check prod-likes">
-                                                <input type="checkbox" class="form-check-input">
-                                                <i data-feather="heart" class="prod-likes-icon"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        
-                                            <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                                        
-                                        <div
-                                            class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                                            <h4 class="mb-0 text-truncate"><b>$299.00</b> <span
-                                                    class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span>
-                                            </h4>
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="ph-duotone ph-star text-warning me-1"></i>
-                                                4.5 <small class="text-muted">/ 5</small>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <a href="#" class="avtar avtar-s btn-link-secondary btn-prod-card"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas">
-                                                    <i class="ph-duotone ph-eye f-18"></i>
-                                                </a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="card product-card card-border-none">
-                                    <div class="card-img-top">
-                                        
-                                            <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-4.jpg" alt="image"
-                                                class="img-prod img-fluid">
-                                       
-                                        <div class="card-body position-absolute end-0 top-0">
-                                            <div class="form-check prod-likes">
-                                                <input type="checkbox" class="form-check-input">
-                                                <i data-feather="heart" class="prod-likes-icon"></i>
-                                            </div>
-                                        </div>
-                                        <div class="card-body position-absolute start-0 top-0">
-                                            <span class="badge bg-danger badge-prod-card">30%</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        
-                                            <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                                        
-                                        <div
-                                            class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                                            <h4 class="mb-0 text-truncate"><b>$299.00</b> <span
-                                                    class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span>
-                                            </h4>
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="ph-duotone ph-star text-warning me-1"></i>
-                                                4.5 <small class="text-muted">/ 5</small>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <a href="#" class="avtar avtar-s btn-link-secondary btn-prod-card"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas">
-                                                    <i class="ph-duotone ph-eye f-18"></i>
-                                                </a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="card product-card card-border-none">
-                                    <div class="card-img-top">
-                                        
-                                            <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-5.jpg" alt="image"
-                                                class="img-prod img-fluid">
-                                        </a>
-                                        <div class="card-body position-absolute end-0 top-0">
-                                            <div class="form-check prod-likes">
-                                                <input type="checkbox" class="form-check-input">
-                                                <i data-feather="heart" class="prod-likes-icon"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        
-                                            <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                                        
-                                        <div
-                                            class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                                            <h4 class="mb-0 text-truncate"><b>$299.00</b> <span
-                                                    class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span>
-                                            </h4>
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="ph-duotone ph-star text-warning me-1"></i>
-                                                4.5 <small class="text-muted">/ 5</small>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <a href="#" class="avtar avtar-s btn-link-secondary btn-prod-card"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas">
-                                                    <i class="ph-duotone ph-eye f-18"></i>
-                                                </a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="card product-card card-border-none">
-                                    <div class="card-img-top">
-                                        
-                                            <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-6.jpg" alt="image"
-                                                class="img-prod img-fluid">
-                                        
-                                        <div class="card-body position-absolute end-0 top-0">
-                                            <div class="form-check prod-likes">
-                                                <input type="checkbox" class="form-check-input">
-                                                <i data-feather="heart" class="prod-likes-icon"></i>
-                                            </div>
-                                        </div>
-                                        <div class="card-body position-absolute start-0 top-0">
-                                            <span class="badge bg-danger badge-prod-card">30%</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                       
-                                            <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                                       
-                                        <div
-                                            class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                                            <h4 class="mb-0 text-truncate"><b>$299.00</b> <span
-                                                    class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span>
-                                            </h4>
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="ph-duotone ph-star text-warning me-1"></i>
-                                                4.5 <small class="text-muted">/ 5</small>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <a href="#" class="avtar avtar-s btn-link-secondary btn-prod-card"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas">
-                                                    <i class="ph-duotone ph-eye f-18"></i>
-                                                </a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="card product-card card-border-none">
-                                    <div class="card-img-top">
-                                        
-                                            <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-7.jpg" alt="image"
-                                                class="img-prod img-fluid">
-                                        
-                                        <div class="card-body position-absolute end-0 top-0">
-                                            <div class="form-check prod-likes">
-                                                <input type="checkbox" class="form-check-input">
-                                                <i data-feather="heart" class="prod-likes-icon"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        
-                                            <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                                        
-                                        <div
-                                            class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                                            <h4 class="mb-0 text-truncate"><b>$299.00</b> <span
-                                                    class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span>
-                                            </h4>
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="ph-duotone ph-star text-warning me-1"></i>
-                                                4.5 <small class="text-muted">/ 5</small>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <a href="#" class="avtar avtar-s btn-link-secondary btn-prod-card"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas">
-                                                    <i class="ph-duotone ph-eye f-18"></i>
-                                                </a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="card product-card card-border-none">
-                                    <div class="card-img-top">
-                                        
-                                            <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-8.jpg" alt="image"
-                                                class="img-prod img-fluid">
-                                        
-                                        <div class="card-body position-absolute end-0 top-0">
-                                            <div class="form-check prod-likes">
-                                                <input type="checkbox" class="form-check-input">
-                                                <i data-feather="heart" class="prod-likes-icon"></i>
-                                            </div>
-                                        </div>
-                                        <div class="card-body position-absolute start-0 top-0">
-                                            <span class="badge bg-danger badge-prod-card">30%</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        
-                                            <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                                        
-                                        <div
-                                            class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                                            <h4 class="mb-0 text-truncate"><b>$299.00</b> <span
-                                                    class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span>
-                                            </h4>
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="ph-duotone ph-star text-warning me-1"></i>
-                                                4.5 <small class="text-muted">/ 5</small>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <a href="#" class="avtar avtar-s btn-link-secondary btn-prod-card"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas">
-                                                    <i class="ph-duotone ph-eye f-18"></i>
-                                                </a>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xl-4">
-                                <div class="card product-card card-border-none">
-                                    <div class="card-img-top">
-                                       
-                                            <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-9.jpg" alt="image"
-                                                class="img-prod img-fluid">
-                                        
-                                        <div class="card-body position-absolute end-0 top-0">
-                                            <div class="form-check prod-likes">
-                                                <input type="checkbox" class="form-check-input">
-                                                <i data-feather="heart" class="prod-likes-icon"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                       
-                                            <p class="prod-content mb-0 text-muted">Apple watch -4</p>
-                                        
-                                        <div
-                                            class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                                            <h4 class="mb-0 text-truncate"><b>$299.00</b> <span
-                                                    class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span>
-                                            </h4>
-                                            <div class="d-inline-flex align-items-center">
-                                                <i class="ph-duotone ph-star text-warning me-1"></i>
-                                                4.5 <small class="text-muted">/ 5</small>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <div class="flex-shrink-0">
-                                                <a href="#" class="avtar avtar-s btn-link-secondary btn-prod-card"
-                                                    data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas">
-                                                    <i class="ph-duotone ph-eye f-18"></i>
-                                                </a>
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <a href="#" class="avtar avtar-s btn-link-secondary btn-prod-card"
+                                                        data-bs-toggle="offcanvas" data-bs-target="#productOffcanvas">
+                                                        <i class="ph-duotone ph-eye f-18"></i>
+                                                    </a>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

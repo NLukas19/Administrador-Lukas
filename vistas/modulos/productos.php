@@ -2,6 +2,7 @@
 
 $categorias = CategoriasControlador::ctrMostrarCategorias(null, null);
 #print_r($categorias);
+$productos = ProductosControlador:: ctrMostrarProductos(null,null)
 
 ?>
 
