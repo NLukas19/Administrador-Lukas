@@ -156,10 +156,14 @@ $roles = RolesControlador::ctrMostrarRoles(null, null);
             <label>Nombre</label>
             <input type="text" name="nombre_usuario" class="form-control" placeholder="Ingrese el nombre del usuario">
           </div>
+
+      
           <div class="form-group">
             <label>Email</label>
             <input type="email" name="email_usuario" class="form-control" placeholder="Ingrese el email del usuario">
           </div>
+
+          
           <div class="form-group">
             <label>Password</label>
             <input type="password" name="password_usuario" class="form-control" placeholder="Ingrese la contraseña">

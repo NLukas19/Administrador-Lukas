@@ -193,7 +193,6 @@ INGRESO DE USUARIO
                     $respuesta2 = UsuariosModelo::mdlRenovarPassword($crypt, $id_usuario);
 
                     if ($respuesta2 == "ok") {
-
                         /*=============================================
 						Enviamos nueva contraseña al correo electrónico
 						=============================================*/

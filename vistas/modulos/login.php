@@ -22,9 +22,13 @@
               <div class="form-group mb-3">
                 <input type="password" class="form-control" id="floatingInput1" name="password_usuario" placeholder="Contraseña" required>
               </div>
+
+
+
               <p class="mb-1">
-                <a href="javascript:void(0)" data-toggle="modal" data-target="#renovar">Renovar contraseña</a>
+                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#renovar">Renovar contraseña</a>
               </p>
+
               <div class="d-grid mt-4">
                 <button type="submit" class="btn btn-primary">Entrar</button>
               </div>
@@ -45,9 +49,7 @@
             <div class="modal-content">
                 <div class="modal-header bg-success">
                     <h4 class="modal-title">Renovar contraseña</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
@@ -64,10 +66,9 @@
                 ?>
 
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times"></i>
-                        Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close"> Cerrar</button>
                     <button type="sumbit" class="btn btn-primary"><i class="fas fa-save"></i> Enviar</button>
-                </div>
+                  </div>
             </div>
             <!-- /.modal-content -->
         </div>

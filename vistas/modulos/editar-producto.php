@@ -14,7 +14,7 @@ $categorias = CategoriasControlador::ctrMostrarCategorias(null, null);
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Producto</h5>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -47,7 +47,7 @@ $categorias = CategoriasControlador::ctrMostrarCategorias(null, null);
                         <div class="form-group">
                             <label for="demo-input-file" class="form-label">Imagen del producto</label>
                             <input class="form-control" type="file" id="subirImagen" name="editar_imagen_producto">
-                            <img width="100" class="previsualizarImagen" src="" alt="">
+                            <img width="100" class="previsualizarImagen" alt="">
                         </div>
                     </div>
 
