@@ -54,4 +54,26 @@ class UsuariosModelo
             return "Error: " . $e->getMessage();
         }
     }
+
+    static public function mdlRenovarPassword($password, $id_usuario)
+    {
+
+        if ($password != null) {
+
+            try {
+                $stmt = Conexion::conectar()->prepare("UPDATE usuarios SET password_usuario = :password_usuario WHERE id_usuario = :id_usuario");
+                $stmt->bindParam(":password_usuario", $password, PDO::PARAM_STR);
+                $stmt->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+
+                if ($stmt->execute()) {
+                    return "ok";
+                } else {
+
+                    return print_r(Conexion::conectar()->errorInfo());
+                }
+            } catch (Exception $e) {
+                return "Error: " . $e->getMessage();
+            }
+        }
+    }
 }

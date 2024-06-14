@@ -21,5 +21,16 @@ class Funciones
         return $url;
     }
 
+    static public function genPassword($longitud)
+    {
+
+        $password = "";
+        $cadena = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        $password = substr(str_shuffle($cadena), 0, $longitud);
+
+        return $password;
+    }
+
 }
 

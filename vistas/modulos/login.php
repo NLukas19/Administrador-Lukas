@@ -22,13 +22,56 @@
               <div class="form-group mb-3">
                 <input type="password" class="form-control" id="floatingInput1" name="password_usuario" placeholder="Contraseña" required>
               </div>
+              <p class="mb-1">
+                <a href="javascript:void(0)" data-toggle="modal" data-target="#renovar">Renovar contraseña</a>
+              </p>
               <div class="d-grid mt-4">
                 <button type="submit" class="btn btn-primary">Entrar</button>
               </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
+  </form>
+</div>
+
+<div class="modal fade" id="renovar">
+
+    <form id="agregarProducto" method="post">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h4 class="modal-title">Renovar contraseña</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" name="resetPassword" class="form-control" placeholder="Ingrese el email" required>
+                    </div>
+
+                </div>
+
+                <?php
+                $renovar = new UsuariosControlador();
+                $renovar->ctrRenovarPassword();
+                ?>
+
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times"></i>
+                        Cerrar</button>
+                    <button type="sumbit" class="btn btn-primary"><i class="fas fa-save"></i> Enviar</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+
   </form>
 </div>
