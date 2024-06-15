@@ -137,6 +137,20 @@ INGRESO DE USUARIO
                         $_SESSION["email_usuario"]  = $respuesta["email_usuario"];
                         $_SESSION["id_usuario"]     = $respuesta["id_usuario"];
 
+                        /*=============================================
+						Enviamos nueva contraseña al correo electrónico
+						=============================================*/
+                        $name = $respuesta["nombre_usuario"];
+                        $subject = "Un usuario acaba de entrar a su sistema";
+                        $email = $respuesta["email_usuario"];
+                        $fecha = date("l jS \of F Y h:i:s A");
+                        $message = "nuevo ingreso al sistema: " . $name."Hora de ingreso: ".$fecha;
+                        $url = PlantillaControlador::url() . "login";
+                        $email_envio = "lukasnahuel241@gmail.com";
+                        $nombre_envio = "Ingreso de usuario";
+
+                        $enviarEmail = PlantillaControlador::enviarEmail($name, $subject, $email, $message, $url, $email_envio, $nombre_envio);
+
                         echo '<script>
                        fncSweetAlert("loading", "Ingresando...", "")
                        window.location = "home";

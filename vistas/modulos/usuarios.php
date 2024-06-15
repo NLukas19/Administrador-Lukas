@@ -153,15 +153,16 @@ $roles = RolesControlador::ctrMostrarRoles(null, null);
         <div class="modal-body">
 
           <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email_usuario" class="form-control" placeholder="Ingrese el email del usuario">
+          </div>
+          
+          <div class="form-group">
             <label>Nombre</label>
             <input type="text" name="nombre_usuario" class="form-control" placeholder="Ingrese el nombre del usuario">
           </div>
 
       
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="email_usuario" class="form-control" placeholder="Ingrese el email del usuario">
-          </div>
 
           
           <div class="form-group">

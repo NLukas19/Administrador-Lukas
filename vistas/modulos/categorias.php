@@ -56,8 +56,8 @@ $productos = ProductosControlador::ctrMostrarProductos(null,null);
                                                         <div>
                                                             <?php foreach ($categorias as $value) { ?>
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" id="category_<?php echo $value["id_categoria"]; ?>" value="<?php echo $value["id_categoria"]; ?>">
-                                                                    <label class="form-check-label" for="category_<?php echo $value["id_categoria"]; ?>">
+                                                                    <input class="form-check-input" type="checkbox">
+                                                                    <label class="form-check-label">
                                                                         <?php echo $value["nombre_categoria"]; ?>
                                                                     </label>
                                                                 </div>
@@ -97,7 +97,7 @@ $productos = ProductosControlador::ctrMostrarProductos(null,null);
                                     <div class="card product-card card-border-none">
                                         <div class="card-img-top">
 
-                                                <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-1.jpg" alt="image"
+                                                <img src=<?php echo $value["imagen_producto"];?> alt="image"
                                                     class="img-prod img-fluid">
                                         </div>
                                         <div class="card-body">
@@ -106,8 +106,7 @@ $productos = ProductosControlador::ctrMostrarProductos(null,null);
 
                                             <div
                                                 class="d-flex align-items-center justify-content-between mt-2 mb-3 flex-wrap gap-1">
-                                                <h4 class="mb-0 text-truncate"><b>$299.00</b> <span
-                                                        class="text-sm text-muted f-w-400 text-decoration-line-through">$399.00</span>
+                                                <h4 class="mb-0 text-truncate"><b><?php echo $value["precio_producto"];?></b>
                                                 </h4>
                                                 <div class="d-inline-flex align-items-center">
                                                     <i class="ph-duotone ph-star text-warning me-1"></i>
@@ -135,6 +134,8 @@ $productos = ProductosControlador::ctrMostrarProductos(null,null);
         <!-- [ Main Content ] end -->
     </div>
 </div>
+
+
 <div class="offcanvas offcanvas-end" tabindex="-1" id="productOffcanvas" aria-labelledby="productOffcanvasLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="productOffcanvasLabel">Detalles del producto</h5>
@@ -146,7 +147,7 @@ $productos = ProductosControlador::ctrMostrarProductos(null,null);
         <div class="card product-card card-border-none shadow-none border-0">
             <div class="card-img-top p-0">
                 
-                    <img src="<?php echo $url ?>vistas/assets/images/application/img-prod-4.jpg" alt="image" class="img-prod img-fluid">
+                    <img src=<?php echo $value["imagen_producto"];?> alt="image" class="img-prod img-fluid">
                 
                 <div class="card-body position-absolute end-0 top-0">
                     <div class="form-check prod-likes">
@@ -159,9 +160,6 @@ $productos = ProductosControlador::ctrMostrarProductos(null,null);
                             </path>
                         </svg>
                     </div>
-                </div>
-                <div class="card-body position-absolute start-0 top-0">
-                    <span class="badge bg-danger badge-prod-card">30%</span>
                 </div>
             </div>
         </div>
